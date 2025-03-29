@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Author: Felix Staacke-->
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <script>
+        function fetchJSONData() {
+            fetch('./sample.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();  
+                })
+                .then(data => console.log(data))  
+                .catch(error => console.error('Failed to fetch data:', error)); 
+        }
+        fetchJSONData();  
+    </script>
+    <title>Arztbrief</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>-->
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+</head>
+<body>
+    <h1>Arztbrief</h1>
+    
+    
+    <!-- load icon-->
+    <!-- @TODO: hier noch eine elegante Variante für alternatives DAteiformat implementieren-->
+    <!-- @TODO: dynamischer Abstand an den rechten Bildschirmrand nachschlagen -->
+    <img src="icon/icon.jpg" style="position: absolute; width: 150px; height: 150px; margin-left: 1050px">
+    
+
+    <!-- input fields-->
+   
+        <!-- Patient Stammdaten-->
+
+        <details open style="border: solid; width: 1000px">
+            <summary><b style="font-size: 25px;">Patient-Stammdaten</b></summary>
+            <div>
+                <table style="width: 98%">
+            
+                    <tr>
+                        <td style="width: 48%">Name:<br/><input style="width:100%"/></td>
+                        <td style="width: 4%"></td>
+                        <td style="width: 48%">Nachname:<input style="width:100%"/></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 48%">Geb.-Dat.:<br/><input style="width: 100%" type="date"/></td>
+                        <td style="width: 4%"></td>
+                        <td style="width: 48%">Geschlecht:<br/>
+                            <select style="width: 100%">
+                                <option>Divers</option>
+                                <option>Männlich</option>
+                                <option>Weiblich</option>
+                            </select>
+                        
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </details>
+
+
+    
+
+    
+        
+
+    <!-- Patient Angehörige-->
+
+    <!-- Patient Medikation-->
+
+    <!-- Relative Prozeduren-->
+
+    <!-- Patient Anamnese-->
+
+    <!-- Patient körperlicher Status-->
+
+    <!-- Patient Drainagen-->
+
+
+    
+
+    <!-- Auto Date and Time-->
+    <!-- Arzt Unterschrift-->
+
+
+</body>
+</html>
