@@ -1,93 +1,294 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Author: Felix Staacke-->
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <script>
-        function fetchJSONData() {
-            fetch('./sample.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();  
-                })
-                .then(data => console.log(data))  
-                .catch(error => console.error('Failed to fetch data:', error)); 
-        }
-        fetchJSONData();  
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arztbrief</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>-->
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 210mm; /* A4 width */
+            height: 297mm; /* A4 height */
+            margin: auto;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 20mm;
+            position: relative;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .organization {
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+        .impressum {
+            font-size: 12px;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .patient-data {
+            width: 55%;
+            position: absolute;
+            top: 140px; /* Position unterhalb von "Organisation XYZ" */
+            left: 8%;
+            right: 170px; /* Platz für das Impressum */
+            border-top: 3px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            
+        }
+
+        .patient-data h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .patient-data p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .patient-member {
+            width: 55%;
+            position: absolute;
+            top: 320px; /* Position unterhalb von "Organisation XYZ" */
+            left: 8%;
+            right: 170px; /* Platz für das Impressum */
+            border-top: 3px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: none; /* Linie ausblenden */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            
+        }
+        textarea{
+            resize: vertical;
+        }
+    </style>
 </head>
 <body>
-    <h1>Arztbrief</h1>
-    
-    
-    <!-- load icon-->
-    <!-- @TODO: hier noch eine elegante Variante für alternatives DAteiformat implementieren-->
-    <!-- @TODO: dynamischer Abstand an den rechten Bildschirmrand nachschlagen -->
-    <img src="icon/icon.jpg" style="position: absolute; width: 150px; height: 150px; margin-left: 1050px">
-    
+    <header>
+        <div>
+            <div class="title">Arztbrief</div>
+            <!--<div class="organization">DRK Kreisverband Naumburg/Nebra e.V.</div>-->
+        </div>
+        <div>
+            <table>
+                <tr width="130"><td>
+                    <img id="logo" alt="Logo" class="logo"></td></tr>
+                <tr width="130"><td>
+                    <br/>
+                        <b style="font-size: 17px">
+                            &nbspDRK Kreisverband
+                            <br/>
+                            &nbspNaumburg/Neba e.V.
+                        </b>
+                    </td></tr>
+                <tr width="130"><td>
+                    <div class="impressum">                            
+                        <table>
+                            <tr><td><b style="font-size: 13px">Geschäftsstelle</b><br/></td></tr>
+                            <tr><td>Jägerstraße 28<br></td></tr>
+                            <tr><td>06618 Naumburg<br></td></tr>
+                        </table>
+                        <table>
+                            <tr><td>Tel.:</td><td>03445 7133-0</td></tr>
+                            <tr><td>Fax:</td><td>03445  713323</td></tr>
+                        </table>
+                        <br>
 
-    <!-- input fields-->
-   
-        <!-- Patient Stammdaten-->
+                        <table>
+                            <tr><td><b style="font-size: 13px">Einsatzleitung</b><br/></td></tr>
+                        </table>
+                        <table>
+                            <tr><td>Tel.:</td><td>03445 7133-0</td></tr>
+                            <tr><td>Fax:</td><td>03445  713323</td></tr>
+                        </table>
+                        <br/>
 
-        <details open style="border: solid; width: 1000px">
-            <summary><b style="font-size: 25px;">Patient-Stammdaten</b></summary>
-            <div>
-                <table style="width: 98%">
-            
+                        <table>
+                            <tr><td><b style="font-size: 13px">Unfall-Hilfsstelle</b><br/></td></tr>
+                        </table>
+                        <table>
+                            <tr><td>Tel.:</td><td>03445 7133-0</td></tr>
+                            <tr><td>Fax:</td><td>03445  713323</td></tr>
+                        </table>
+                     
+                    </div>
+                </td></tr>
+            </table>
+        </div>
+    </header>
+
+    <div class="content">
+        <!-- Patient-Stammdaten -->
+        <div class="patient-data">
+            <b style="font-size: 17px">&nbspPatient-Stammdaten:</b>
+            <table>
+                <tr>
+                    <td style="width: 40%"><p><strong>Anrede:</strong></p></td>
+                    <td >
+                        <table >
+                            <tr><td><select >
+                                <option>Frau</option>
+                                <option>Herr</option>
+                            </select></td><td>
+                                <p><strong>Titel:</strong></p>
+                            </td><td>
+                                <select>
+                                    <option></option>
+                                    <option>Dr.</option>
+                                    <option>Prof.</option>
+                                </select>
+                            </td></tr>
+                        </table>
+                    </td>
+                </tr><tr>
+                    <td><p><strong>Name:</strong></p></td>
+                    <td ><input style="width: 180%" placeholder="Schreiben Sie hier den Nachnamen..."/></td>
+                </tr><tr>
+                    <td><p><strong>Vorname:</strong></p></td>
+                    <td><input style="width: 180%" placeholder="Schreiben Sie hier den Vornamen..."/></td>
+                </tr><tr>
+                    <td><p><strong>Geburtsdatum:</strong></p></td>
+                    <td><input style="width: 181%" type="date"/></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="content">
+            <!-- Patient-Stammdaten -->
+            <div class="patient-member">
+                <b style="font-size: 17px">Patient-Anghörige:</b>
+                
+                <table>
                     <tr>
-                        <td style="width: 48%">Name:<br/><input style="width:100%"/></td>
-                        <td style="width: 4%"></td>
-                        <td style="width: 48%">Nachname:<input style="width:100%"/></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 48%">Geb.-Dat.:<br/><input style="width: 100%" type="date"/></td>
-                        <td style="width: 4%"></td>
-                        <td style="width: 48%">Geschlecht:<br/>
-                            <select style="width: 100%">
-                                <option>Divers</option>
-                                <option>Männlich</option>
-                                <option>Weiblich</option>
+                        <td style="width: 500px">
+                            <select >
+                                <option></option>
+                                <option><b>Mutter:</b></option>
+                                <option><b>Vater:</b></option>
+                                <option><b>Ehefrau:</b></option>
+                                <option><b>Ehemann:</b></option>
+                                <option><b>Tocher:</b></option>
+                                <option><b>Sohn:</b></option>
                             </select>
-                        
+                        </td><td style="width: 35%">
+                            <input placeholder="Nachname"/>
+                        </td style="width: 35%"><td>
+                            <input placeholder="Vorname"/>
+                        </td>
+                    <tr>
+                        <td></td>                    
+                        <td colspan="2">
+                            <textarea style="width: 98%;" placeholder="Erreichbarkeit"></textarea>
+                          
+                        </td>
+                    </tr><tr>
+                        <td style="width: 500px">
+                            <select >
+                                <option></option>
+                                <option><b>Mutter:</b></option>
+                                <option><b>Vater:</b></option>
+                                <option><b>Ehefrau:</b></option>
+                                <option><b>Ehemann:</b></option>
+                                <option><b>Tocher:</b></option>
+                                <option><b>Sohn:</b></option>
+                            </select>
+                        </td><td style="width: 35%">
+                            <input placeholder="Nachname"/>
+                        </td style="width: 35%"><td>
+                            <input placeholder="Vorname"/>
+                        </td>
+                    <tr>
+                        <td></td>                    
+                        <td colspan="2">
+                            <textarea style="width: 98%;" placeholder="Erreichbarkeit"></textarea>
+                          
                         </td>
                     </tr>
+
+
+
+                  
                 </table>
             </div>
-        </details>
-
-
-    
-
-    
+        </div>
         
 
-    <!-- Patient Angehörige-->
-
-    <!-- Patient Medikation-->
-
-    <!-- Relative Prozeduren-->
-
-    <!-- Patient Anamnese-->
-
-    <!-- Patient körperlicher Status-->
-
-    <!-- Patient Drainagen-->
 
 
-    
-
-    <!-- Auto Date and Time-->
-    <!-- Arzt Unterschrift-->
 
 
+    </div><!-- End of content-->
+
+    <script>
+        // Liste der möglichen Logo-Dateien
+        const logoFiles = ['icon/logo.png', 'icon/logo.svg', 'icon/logo.jpg'];
+
+        // Überprüfen, welche Datei existiert
+        function checkLogo() {
+            const logoElement = document.getElementById('logo');
+            let found = false;
+
+            logoFiles.forEach((file) => {
+                if (!found) {
+                    const img = new Image();
+                    img.src = file;
+                    img.onload = () => {
+                        if (!found) {
+                            logoElement.src = file;
+                            found = true;
+                        }
+                    };
+                    img.onerror = () => {
+                        console.log(`Datei ${file} nicht gefunden.`);
+                    };
+                }
+            });
+        }
+
+        // Logo überprüfen und setzen
+        checkLogo();
+    </script>
 </body>
 </html>
