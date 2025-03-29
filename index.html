@@ -28,17 +28,25 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
             position: relative;
+            left: 20px;
         }
 
         .title {
             font-size: 28px;
             font-weight: bold;
+            text-align: center;
+            width: 55%;
+            position: absolute;
+            top: 70px; 
         }
 
         .organization {
-            font-size: 18px;
-            font-weight: normal;
-            margin-top: 5px;
+            font-size: 15px;
+            color: grey;
+            text-align: center;
+            width: 55%;
+            position: absolute;
+            top: 110px; 
         }
 
         .logo {
@@ -89,6 +97,18 @@
             border-radius: 5px;
             
         }
+
+        .patient-anamnese {
+            width: 80%;
+            position: absolute;
+            top: 500px; /* Position unterhalb von "Organisation XYZ" */
+            left: 8%;
+            right: 170px; /* Platz für das Impressum */
+            border-top: 3px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            
+        }
         header {
             display: flex;
             justify-content: space-between;
@@ -100,15 +120,15 @@
             
         }
         textarea{
-            resize: vertical;
+            resize: unset;
         }
     </style>
 </head>
 <body>
     <header>
         <div>
-            <div class="title">Arztbrief</div>
-            <!--<div class="organization">DRK Kreisverband Naumburg/Nebra e.V.</div>-->
+        
+            
         </div>
         <div>
             <table>
@@ -159,8 +179,12 @@
     </header>
 
     <div class="content">
+        <div class="title">Arztbrief</div>
+        <div class="organization">ausgestellt während dem Sanitätswachdient: Weinmeile</div>
         <!-- Patient-Stammdaten -->
         <div class="patient-data">
+            
+            
             <b style="font-size: 17px">&nbspPatient-Stammdaten:</b>
             <table>
                 <tr>
@@ -252,8 +276,22 @@
                   
                 </table>
             </div>
-        </div>
+        </div><!-- End of Patient-Members-->
         
+ 
+
+        <div class="patient-anamnese">
+        </div><!-- End of Patient-Anamnese-->
+        
+
+
+
+
+
+
+
+
+
 
 
 
