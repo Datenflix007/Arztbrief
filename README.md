@@ -1,6 +1,6 @@
 # Project Description 
 
 # Setup
-1. Clone this repository, or Download the .ZIP package.
+1. Clone this repository, or download the .ZIP package.
 2. Open index.html.
-3. Hope you enjoiy using. If you reconise Errors, please report it.
+3. Enjoy using it. If you notice any bugs or have suggestions for improvement, please contact me.
