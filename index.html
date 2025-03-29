@@ -18,6 +18,7 @@
             border: 1px solid #ccc;
             padding: 20mm;
             position: relative;
+            
         }
 
         header {
@@ -109,6 +110,28 @@
             border-radius: 5px;
             
         }
+
+        .seite1 {
+            width: 55%;
+            position: absolute;
+            top: 95%; /* Position unterhalb von "Organisation XYZ" */
+            left: 22%;
+            border-top: 3px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .patient-verlauf {
+            width: 80%;
+            position: absolute;
+            top: 105%; /* Position unterhalb von "Organisation XYZ" */
+            left: 8%;
+            right: 170px; /* Platz für das Impressum */
+            border-top: 3px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
         header {
             display: flex;
             justify-content: space-between;
@@ -159,8 +182,8 @@
                             <tr><td><b style="font-size: 13px">Einsatzleitung</b><br/></td></tr>
                         </table>
                         <table>
-                            <tr><td>Tel.:</td><td>03445 7133-0</td></tr>
-                            <tr><td>Fax:</td><td>03445  713323</td></tr>
+                            <tr><td>Einsatzleitung@drk-naumburg.de</td></tr>
+                            <tr><td>+49 1636 653818</td></tr>
                         </table>
                         <br/>
 
@@ -168,8 +191,7 @@
                             <tr><td><b style="font-size: 13px">Unfall-Hilfsstelle</b><br/></td></tr>
                         </table>
                         <table>
-                            <tr><td>Tel.:</td><td>03445 7133-0</td></tr>
-                            <tr><td>Fax:</td><td>03445  713323</td></tr>
+                            <tr><td>Tel.:</td><td>+49 1636 653818</td></tr>
                         </table>
                      
                     </div>
@@ -222,7 +244,7 @@
   
             <!-- Patient-Stammdaten -->
             <div class="patient-member">
-                <b style="font-size: 17px">Patient-Anghörige:</b>
+                <b style="font-size: 17px">&nbspPatient-Anghörige:</b>
                 
                 <table>
                     <tr>
@@ -281,11 +303,11 @@
  
 
         <div class="patient-anamnese">
-            <b style="font-size: 17px">Anamnese:</b><br/>
+            <b style="font-size: 17px">&nbspAnamnese:</b><br/>
             <textarea style="width: 98%; height: 70px;" placeholder="Schreiben Sie hier die Anamnese..." ></textarea>
 
-            <br />
-            <b style="font-size: 17px">Vitalparameter bei Aufnahme:</b><br/>
+            <br /><br/>
+            <b style="font-size: 17px">&nbspVitalparameter bei Aufnahme:</b><br/>
             <table>
                 <tr>
                     <td width="50px;"><b>RR:</b></td>
@@ -296,7 +318,7 @@
                     <td width="50px;"><input style="width: 50px;" placeholder="Schläge"/></td>
                     <td width="50px;">/min</td>
                     <td width="50px;"><b>Rhytmus:</b></td>
-                    <td width="50px;" colspan="2"><input  placeholder="Rhytmus..."/></td>
+                    <td width="50px;" colspan="2"><input style="width: 200%" placeholder="Rhytmus..."/></td>
                     <td width="50px;"></td>
                 </tr><tr>
                     <td><b>AF:</b></td>
@@ -306,23 +328,81 @@
                     <td style="text-align: right;"><b>SpO<sub>2</sub>:</b></td>
                     <td><input style="width: 50px;" placeholder="SPO2"/></td>
                     <td>%</td>
-                    <td><b>Temp.:</b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr><tr>
+                    <td conspan="1" style="text-align: right;"><b>Temp.:</b></td>
                     <td><input style="width: 50px;" placeholder="Temp."/></td>
                     <td></td>
+                    <td></td>                    
+                    <td style="text-align: right;"><b>GCS:</b></td>
+                    <td><input style="width: 50px;" placeholder="SPO2"/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <br/>
+            <b style="font-size: 17px">&nbspKörperlicher Status bei Aufnahme:</b><br/>
+            <table>
+                <tr>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+                    <td width="50"></td>
+
+                </tr><tr>
+                    <td width="50px;" colspan="4"><b>Vigilanz:</b></td> <!--@TODO: maybe suggestens or dropdown-->
+                    <td width="50px;" colspan="6"><input style="width: 420px;"/></td> 
+                </tr><tr>
+                    <td width="50px;" colspan="3"><b>Pupillengröße</b></td>
+                    <td width="50px;" style="text-align: right;"><b>rechts:</b></td>
+                    <td colspan="2" width="50px;" ><input style="width: 95%" placeholder="SPO2"/></td>
+                    <td width="50px;"  style="text-align: right;"><b>links:</b></td>
+                    <td colspan="2" width="50px;"><input style="width: 95%" placeholder="SPO2"/></td> 
+                </tr><tr>
+                    <td width="50px;" colspan="3"><b>Lichtreaktion</b></td>
+                    <td width="50px;" style="text-align: right;"><b>rechts:</b></td>
+                    <td colspan="2" width="50px;" ><input style="width: 95%" placeholder="SPO2"/></td>
+                    <td width="50px;"  style="text-align: right;"><b>links:</b></td>
+                    <td colspan="2" width="50px;"><input style="width: 95%" placeholder="SPO2"/></td> 
+                </tr><tr>
+                    <td colspan="4" width="50"><b>Atemweg:</b></td>                    
+                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
+                </tr><tr>
+                    <td colspan="4" width="50"><b>Atmung:</b></td>
+                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
+                </tr><tr>
+                    <td colspan="4" width="50"><b>Norepinephrin:</b></td>
+                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
+                </tr><tr>
+                    <td colspan="4" width="50"><b>Dobutamin:</b></td>
+                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
                 </tr>
             </table>
 
 
 
-
-
-
-
-
-            <br/>
-            <b style="font-size: 17px">Körperlicher Status bei Aufnahme:</b><br/>
         </div><!-- End of Patient-Anamnese-->
         
+        <div class="seite1">
+            <b style="font-size: 17px">Seite 1 / 2:</b><br/>
+        </div>  
+
+
+        <div class="patient-verlauf">
+            <b style="font-size: 17px">&nbspAnamnese:</b><br/>
+        
+        </div>
+
 
 
 
