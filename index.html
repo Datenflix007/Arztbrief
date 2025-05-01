@@ -187,12 +187,7 @@
                         </table>
                         <br/>
 
-                        <table>
-                            <tr><td><b style="font-size: 13px">Unfall-Hilfsstelle</b><br/></td></tr>
-                        </table>
-                        <table>
-                            <tr><td>Tel.:</td><td>+49 1636 653818</td></tr>
-                        </table>
+                       
                      
                     </div>
                 </td></tr>
@@ -304,7 +299,9 @@
 
         <div class="patient-anamnese">
             <b style="font-size: 17px">&nbspAnamnese:</b><br/>
-            <textarea style="width: 98%; height: 70px;" placeholder="Schreiben Sie hier die Anamnese..." ></textarea>
+            <textarea style="width: 98%; height: 100px;" placeholder="Schreiben Sie hier die Anamnese..." ></textarea>
+            <!-- Größte für patient größer, ob vielleicht automatisch angepasst-->
+
 
             <br /><br/>
             <b style="font-size: 17px">&nbspVitalparameter bei Aufnahme:</b><br/>
@@ -337,7 +334,7 @@
                     <td></td>
                     <td></td>                    
                     <td style="text-align: right;"><b>GCS:</b></td>
-                    <td><input style="width: 50px;" placeholder="SPO2"/></td>
+                    <td><input style="width: 50px;" placeholder="GCS"/></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -365,15 +362,31 @@
                 </tr><tr>
                     <td width="50px;" colspan="3"><b>Pupillengröße</b></td>
                     <td width="50px;" style="text-align: right;"><b>rechts:</b></td>
-                    <td colspan="2" width="50px;" ><input style="width: 95%" placeholder="SPO2"/></td>
+                    <td colspan="2" width="50px;" ><td width="50px;" colspan="3"><select>
+                        <option>eng</option>
+                        <option>mittelweit</option>
+                        <option>weit</option>
+                    </select></td></td>
                     <td width="50px;"  style="text-align: right;"><b>links:</b></td>
-                    <td colspan="2" width="50px;"><input style="width: 95%" placeholder="SPO2"/></td> 
+                    <td colspan="2" width="50px;"><td width="50px;" colspan="3"><select>
+                        <option>eng</option>
+                        <option>mittelweit</option>
+                        <option>weit</option>
+                    </select></td></td> 
                 </tr><tr>
                     <td width="50px;" colspan="3"><b>Lichtreaktion</b></td>
                     <td width="50px;" style="text-align: right;"><b>rechts:</b></td>
-                    <td colspan="2" width="50px;" ><input style="width: 95%" placeholder="SPO2"/></td>
+                    <td colspan="2" width="50px;" ><td width="50px;" colspan="3"><select>
+                        <option>keine</option>
+                        <option>prompt</option>
+                        <option>träge</option>
+                    </select></td></td>
                     <td width="50px;"  style="text-align: right;"><b>links:</b></td>
-                    <td colspan="2" width="50px;"><input style="width: 95%" placeholder="SPO2"/></td> 
+                    <td colspan="2" width="50px;"><td width="50px;" colspan="3"><select>
+                        <option>keine</option>
+                        <option>prompt</option>
+                        <option>träge</option>
+                    </select></td></td> 
                 </tr><tr>
                     <td colspan="4" width="50"><b>Atemweg:</b></td>                    
                     <td colspan="6" width="50"><input style="width: 420px;"/></td>
@@ -382,10 +395,20 @@
                     <td colspan="6" width="50"><input style="width: 420px;"/></td>
                 </tr><tr>
                     <td colspan="4" width="50"><b>Norepinephrin:</b></td>
-                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
+                    <td colspan="6" width="50"><input style="width: 420px;"/>
+                    <select>
+                        <option>ml/h</option>
+                        <option>µg/kgKG/min</option>
+                    </select>
+                </td>
                 </tr><tr>
-                    <td colspan="4" width="50"><b>Dobutamin:</b></td>
-                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
+                    <td colspan="4" width="50"><b>Adrenalin:</b></td>
+                    <td colspan="6" width="50"><input style="width: 420px;"/>
+                        <select>
+                            <option>ml/h</option>
+                            <option>µg/kgKG/min</option>
+                        </select>
+                    </td>
                 </tr>
             </table>
 
@@ -397,11 +420,64 @@
             <b style="font-size: 17px">Seite 1 / 2:</b><br/>
         </div>  
 
+        Atemweg:
+        <select>
+            <option>Maske</option>
+            <option>Nasenbrille</option>
+            <option>spontan</option>
+            <option>Tubus</option>
+        </select>
+
+        <!-- nach Auswahl von der Maske oder Nasenbrille-->
+        Sauerstoffinsufflation:<input type="text" placeholder="Anzahl"  /> l/min
+
+        <!-- nach Auswahl des Tubus-->
+         Anmerkung: <input type="text" placeholder="Tubusgröße, etc."  />
+
+
+        Beamtung
+        <select>
+            <option>eng</option>
+            <option>mittelweit</option>
+            <option>weit</option>
+        </select>
+
+        Invasive Maßnahmen:
+        <select>
+            <option>ja</option>
+            <option>nein</option>
+        </select>
+
+        <!-- falls ja-->
+        <textarea style="width: 98%; height: 100px;" placeholder="Schreiben Sie hier die invasiven Maßnahmen (Zugänge, Infusionen, etc.)..." ></textarea>
+
+
+
+
+
 
         <div class="patient-verlauf">
-            <b style="font-size: 17px">&nbspAnamnese:</b><br/>
+            <b style="font-size: 17px">&nbspVerlauf:</b><br/>
+
+
+            <!-- hier ein großes Textfeld-->
+            <textarea rows="20" cols="90" placeholder="Bitte hier Ihre Anmerkungen eingeben..."></textarea>
         
-        </div>
+            <!-- Verdachtsdiagnose-->
+             <textarea placeholder="Verdachtsdiagnose"></textarea>
+             <br />
+
+             <!-- Prozedere-->
+             <textarea rows="20" cols="45" placeholder="Bitte hier Ihre Anmerkungen eingeben..."></textarea>
+        
+
+             <br/><br/><br/>
+            <!-- Artwahl und Unterschrift -->
+            <!-- //TODO: automatische Uhrzeit und Datumsangabe-->
+            Time + Date<br/>
+            Arzt/Stempel:<br/>
+        
+            </div>
 
 
 
