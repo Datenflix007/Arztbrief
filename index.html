@@ -152,6 +152,33 @@
             border: 1px solid #ccc;
             border-radius: 5px;     
         }
+        .aligned-label {
+            text-align: left;
+            padding-left: 10px; /* Einheitliche Ausrichtung */
+        }
+        #MedikamtenZusatz {
+            display: none;
+            margin-top: 20px; /* Abstand nach oben */
+            margin-bottom: 20px; /* Abstand nach unten */
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #InfusionZusatz {
+            display: none;
+            margin-top: 20px; /* Abstand nach oben */
+            margin-bottom: 20px; /* Abstand nach unten */
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #Verdachtsdiagnose {
+            margin-top: 5000px; /* Abstand nach oben */
+        }
     </style>
 </head>
 <body>
@@ -389,38 +416,66 @@
                     </select></td>
                     <td  style="text-align: right;" ><b>links:</b></td>
                     <td colspan="1"><select>
-                        <option>eng</option>
-                        <option>mittelweit</option>
-                        <option>weit</option>
+                        <option>keine</option>
+                        <option>prompt</option>
+                        <option>träge</option>
                     </select></td></td> 
                 </tr>
+            
+                
+            </table>
+            </div>
+            <div style="position: absolute; top: 900px; left: 60px; width: 100%;">
+                <b class="aligned-label">Maßnahmen</b>            
+                <table>
+                    <tr>
+                        <td colspan="4" class="aligned-label"><b>Atmung:</b></td>
+                        <td colspan="6">
+                            <select id="O2auswahl">
+                                <option value="">Bitte wählen</option>
+                                <option value="Maske">Maske</option>
+                                <option value="Nasenbrille">Nasenbrille</option>
+                                <option value="spontan">spontan</option>
+                                <option value="Tubus">Tubus</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Nach Auswahl von Maske oder Nasenbrille -->
+            <div id="O2ZusatzDiv" style="display: none; margin-top: 520px; width: 100%; position: absolute; left: 48px">
+                <table style="width: 100%;  border-radius: 5px; padding: 10px;">
+                    <tr>
+                        <td colspan="4" class="aligned-label"><b>Sauerstoffinsufflation:</b></td>
+                        <td colspan="6"><input type="text" placeholder="Anzahl" /> l/min</td>
+                    </tr>
+                    <tr>
+                        <td> <b>Anmerkung:</b></td>
+                        <td><input type="text" placeholder="Weitere Anmerkungen..." style="width: 100%"/></td>
+                    </tr>
+                </table>
+
+                
+           
+            
+            <br /><br />
+            </div>
+
+
+        <div id="O2ZusatzTubus" style="display: none; margin-top: 520px; width: 100%; position: absolute; margin-left: 0px; left: 68px; width: 100%; ">
+          
+            <table style="width: 100%;">
                 <tr>
-                    <td colspan="4" width="50"><b>Atemweg:</b></td>                    
-                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
+                    <td width="200"><b>Tubusgröße</b></td>
+                    <td width="600"><input type="text" /></td>
                 </tr><tr>
-                    <td colspan="4" width="50"><b>Atmung:</b></td>
-                    <td colspan="6" width="50"><input style="width: 420px;"/></td>
-                </tr><tr>
-                    <td colspan="4" width="50"><b>Norepinephrin:</b></td>
-                    <td colspan="6" width="50"><input style="width: 420px;"/>
-                    <select>
-                        <option>ml/h</option>
-                        <option>µg/kgKG/min</option>
-                    </select>
-                </td>
-                </tr><tr>
-                    <td colspan="4" width="50"><b>Adrenalin:</b></td>
-                    <td colspan="6" width="50"><input style="width: 420px;"/>
-                        <select>
-                            <option>ml/h</option>
-                            <option>µg/kgKG/min</option>
-                        </select>
-                    </td>
+                    <td><b>Anmerkungen</b></td>
+                    <td><input type="text" placeholder="Weitere Anmerkungen..." /></td>
                 </tr>
             </table>
 
-
-
+        </div>
         </div><!-- End of Patient-Anamnese-->
         
         <div class="seite1">
@@ -429,71 +484,71 @@
         
             </div>
 
-    <div class="content page2">
-        <h2 style="text-align: center;">Seite 2</h2>
-    </div>
-        <div class="section" style="position: absolute; top: 5000px; left: 20mm; right: 20mm;">
-            <b style="font-size: 17px;">Atemweg:</b>
-            <select id="O2auswahl">
-                <option value="">Bitte wählen</option>
-                <option value="Maske">Maske</option>
-                <option value="Nasenbrille">Nasenbrille</option>
-                <option value="spontan">spontan</option>
-                <option value="Tubus">Tubus</option>
-            </select>
-            <br /><br />
-        </div>
-
-        <!-- Nach Auswahl von Maske oder Nasenbrille -->
-        <div id="O2ZusatzDiv" style="display: none; margin-top: 10px; padding: 10px; border: 1px solid #ccc; background-color: #f5f5f5;">
-            <b>Sauerstoffinsufflation:</b>
-            <input type="text" placeholder="Anzahl" /> l/min
-            <br /><br />
-        </div>
+           
             
-        <div class="section" style="position: absolute; top: 5200px; left: 20mm; right: 20mm;">
-            <!-- Nach Auswahl des Tubus -->
-            <b>Anmerkung:</b>
-            <input type="text" placeholder="Tubusgröße, etc." />
-            <br /><br />
+          
+    
+            
 
-            <b>Beatmung:</b>
-            <select>
-                <option>eng</option>
-                <option>mittelweit</option>
-                <option>weit</option>
-            </select>
-            <br /><br />
 
-            <b>Invasive Maßnahmen:</b>
-            <select>
-                <option>ja</option>
-                <option>nein</option>
-            </select>
-            <br /><br />
-
+            
+            
+            
+        <div class="section" style="position: absolute; top: 1150px; left: 20mm; right: 20mm;">
+            
+            <table>
+                <tr>
+                    <td><b>Invasive Maßnahmen:</b></td>
+                    <td><select id="invasiveSelect" style="width: 50px;">
+                        <option value="">Bitte wählen</option>
+                        <option value="ja">ja</option>
+                        <option value="nein">nein</option>
+                    </select></td>
+                </tr>
+            </table>
+        </div>
+        <div id="InfusionZusatz" style="display: none; margin-top: 780px; width: 100%; position: absolute; margin-left: 0px; left: 68px; width: 100%;">
             <!-- Falls ja -->
-            <textarea style="width: 98%; height: 100px;" placeholder="Schreiben Sie hier die invasiven Maßnahmen (Zugänge, Infusionen, etc.)..."></textarea>
+            <b>Infusionen:</b><br />
+            <textarea style="height: 100px; width: 80%" placeholder="Schreiben Sie hier die invasiven Maßnahmen (Zugänge, Infusionen, etc.)..."></textarea>
+            <b>Medikamentengabe:</b><br />
+            <textarea style="height: 100px; width: 80%" placeholder="Schreiben Sie hier die Medikamente..."></textarea>
+            <br/>
+            <b>Weitere Angaben:</b><br />
+            <textarea style="height: 100px; width: 80%" placeholder="Schreiben Sie hier weitere Angaben..."></textarea>
+        
         </div>
 
-        <div class="patient-verlauf" style="position: absolute; top: 1500px; left: 20mm; right: 20mm;">
-            <b style="font-size: 17px;">Verlauf:</b>
-            <br /><br />
+        
+
+          
+            
+           
+            
+
+            
+            
+               </div>
+
+        <div id="Verdachtsdiagnose" style="top: 1000px;">
+            <!-- Verdachtsdiagnose -->
+            <b>Verdachtsdiagnose:</b>
+            <textarea placeholder="Verdachtsdiagnose" style="width: 100%"></textarea>
+        </div>
+
+        <div style="position: absolute; top: 1230px; left: 20mm; right: 20mm;">
+            
+            
 
             <!-- Großes Textfeld -->
-            <textarea rows="20" cols="90" placeholder="Bitte hier Ihre Anmerkungen eingeben..."></textarea>
+             <br />
+            <b>Prozedere:</b>
+            <textarea rows="20" style="width: 100%;" placeholder="Bitte hier Ihre Anmerkungen eingeben..."></textarea>
             <br /><br />
-
-            <!-- Verdachtsdiagnose -->
-            <textarea placeholder="Verdachtsdiagnose"></textarea>
-            <br /><br />
-
-            <!-- Prozedere -->
-            <textarea rows="20" cols="45" placeholder="Bitte hier Ihre Anmerkungen eingeben..."></textarea>
-            <br /><br /><br />
 
             <!-- Arztwahl und Unterschrift -->
             <b>Time + Date:</b>
+            <b id="timeDateDisplay"></b>
             <br />
             <b>Arzt/Stempel:</b>
             <br />
@@ -530,15 +585,151 @@
         checkLogo();
     
         const auswahl = document.getElementById('O2auswahl');
+        const invasiveSelect = document.getElementById('invasiveSelect');
+        const infusionZusatz = document.getElementById('InfusionZusatz');
+        const infusionSelect = document.getElementById('MedikamtenSelect');
+        const infusionZusatzMedikament = document.getElementById('MedikamtenZusatz');
         const zusatzDiv = document.getElementById('O2ZusatzDiv');
-    
+        const allDivs = document.querySelectorAll('div'); // Alle divs auf der Seite
+        const tubusDiv = document.getElementById('O2ZusatzTubus'); // Das div für den Tubus
+
         auswahl.addEventListener('change', function () {
-          if (auswahl.value === 'Maske' || auswahl.value === 'Nasenbrille') {
-            zusatzDiv.style.display = 'block';
-          } else {
-            zusatzDiv.style.display = 'none';
-          }
+            if (auswahl.value === 'Maske' || auswahl.value === 'Nasenbrille') {
+                zusatzDiv.style.display = 'block';
+
+                // Höhe von O2ZusatzDiv berechnen
+                const zusatzDivHeight = zusatzDiv.offsetHeight;
+
+                // Alle nachfolgenden divs verschieben
+                let startAdjusting = false;
+                allDivs.forEach(div => {
+                    if (startAdjusting) {
+                        const currentTop = parseInt(window.getComputedStyle(div).top || 0, 10);
+                        div.style.top = (currentTop + zusatzDivHeight) + 'px';
+                    }
+                    if (div === zusatzDiv) {
+                        startAdjusting = true;
+                    }
+                });
+            } else if(auswahl.value === 'Tubus') {
+                // O2ZusatzDiv ausblenden und Positionen zurücksetzen
+                const zusatzDivHeight = tubusDiv.offsetHeight;
+                tubusDiv.style.display = 'block';
+
+                let startAdjusting = false;
+                allDivs.forEach(div => {
+                    if (startAdjusting) {
+                        const currentTop = parseInt(window.getComputedStyle(div).top || 0, 10);
+                        div.style.top = (currentTop - zusatzDivHeight) + 'px';
+                    }
+                    if (div === tubusDiv) {
+                        startAdjusting = true;
+                    }
+                });
+            } else if(invasiveSelect.value === 'ja') {
+                infusionZusatz.style.display = 'block';
+            } else if (invasiveSelect.value === 'nein') {
+                infusionZusatz.style.display = 'none';
+            } else if (medikamentSelect.value === 'ja') {
+                infusionZusatzMedikament.style.display = 'block';
+            } else if (medikamentSelect.value === 'nein') {
+                infusionZusatzMedikament.style.display = 'none';
+            }  else {
+                // O2ZusatzDiv ausblenden und Positionen zurücksetzen
+                const zusatzDivHeight = zusatzDiv.offsetHeight;
+                zusatzDiv.style.display = 'none';
+
+                let startAdjusting = false;
+                allDivs.forEach(div => {
+                    if (startAdjusting) {
+                        const currentTop = parseInt(window.getComputedStyle(div).top || 0, 10);
+                        div.style.top = (currentTop - zusatzDivHeight) + 'px';
+                    }
+                    if (div === zusatzDiv) {
+                        startAdjusting = true;
+                    }
+                });
+            }
         });
-      </script>
+
+        const auswahlSimple = document.getElementById('O2auswahl');
+        const zusatzDivSimple = document.getElementById('O2ZusatzDiv');
+
+        auswahlSimple.addEventListener('change', function () {
+            if (auswahlSimple.value === 'Maske' || auswahlSimple.value === 'Nasenbrille') {
+                zusatzDivSimple.style.display = 'block';
+            } else {
+                zusatzDivSimple.style.display = 'none';
+            }
+        });
+
+        // Funktion zum Verschieben der nachfolgenden Elemente
+        function adjustElementsBelow(targetDiv, isVisible) {
+            const divHeight = targetDiv.offsetHeight; // Höhe des Divs
+            const allDivs = document.querySelectorAll('div'); // Alle Divs auf der Seite
+
+            let startAdjusting = false;
+            allDivs.forEach(div => {
+                if (startAdjusting) {
+                    const currentTop = parseInt(window.getComputedStyle(div).top || 0, 10);
+                    div.style.top = isVisible
+                        ? (currentTop + divHeight) + 'px' // Nach unten verschieben
+                        : (currentTop - divHeight) + 'px'; // Nach oben verschieben
+                }
+                if (div === targetDiv) {
+                    startAdjusting = true;
+                }
+            });
+        }
+
+        // Event-Listener für Invasive Maßnahmen
+        invasiveSelect.addEventListener('change', function () {
+            if (invasiveSelect.value === 'ja') {
+                infusionZusatz.style.display = 'block'; // Div anzeigen
+                adjustElementsBelow(infusionZusatz, true); // Nachfolgende Elemente verschieben
+            } else if (invasiveSelect.value === 'nein') {
+                adjustElementsBelow(infusionZusatz, false); // Nachfolgende Elemente zurückverschieben
+                infusionZusatz.style.display = 'none'; // Div ausblenden
+            }
+        });
+
+        // Event-Listener für Medikamentengabe
+        const medikamentSelect = document.getElementById('MedikamtenSelect');
+        const medikamentZusatzDiv = document.getElementById('MedikamtenZusatz');
+
+        medikamentSelect.addEventListener('change', function () {
+            if (medikamentSelect.value === 'ja') {
+                medikamentZusatzDiv.style.display = 'block'; // Div anzeigen
+            } else if (medikamentSelect.value === 'nein') {
+                medikamentZusatzDiv.style.display = 'none'; // Div ausblenden
+            }
+        });
+
+        medikamentSelect.addEventListener('change', function () {
+            if (medikamentSelect.value === 'ja') {
+                medikamentZusatzDiv.style.display = 'block'; // Div anzeigen
+                adjustElementsBelow(medikamentZusatzDiv, true); // Nachfolgende Elemente verschieben
+            } else if (medikamentSelect.value === 'nein') {
+                adjustElementsBelow(medikamentZusatzDiv, false); // Nachfolgende Elemente zurückverschieben
+                medikamentZusatzDiv.style.display = 'none'; // Div ausblenden
+            }
+        });
+
+        function updateTimeAndDate() {
+            const timeDateElement = document.getElementById('timeDateDisplay');
+            if (timeDateElement) {
+                const now = new Date();
+                const formattedDate = now.toLocaleDateString(); // Format: TT.MM.JJJJ
+                const formattedTime = now.toLocaleTimeString(); // Format: HH:MM:SS
+                timeDateElement.textContent = `Datum und Uhrzeit: ${formattedDate} ${formattedTime}`;
+            }
+        }
+
+        // Rufe die Funktion beim Laden der Seite auf
+        window.onload = updateTimeAndDate;
+
+        // Optional: Aktualisiere die Zeit und das Datum jede Minute
+        setInterval(updateTimeAndDate, 60000);
+    </script>
 </body>
 </html>
